@@ -30,3 +30,25 @@ def calcaular_lacunas(meta_volumes, volumes_adquiridos):
         score += 30
     elif status == "Em Publicação":
         score += 15
+    elif status == "Hiato":
+        score += 10
+    
+    meta = ficha_manga.get("meta_volumes", 0)
+    vols_adquiridos = ficha_manga.get("volumes_adquiridos", [])
+
+    lacunas = calcaular_lacunas(meta, vols_adquiridos)
+
+    if 0 < len(lacunas) <= 5:
+        score += 20
+
+    if tem_buraco_isolado(vols_adquiridos):
+        score += 10
+
+    if score >= 80:
+        return "URGENTE"
+    elif score >= 60:
+        return "Alta"
+    elif score >= 40:
+        return "Média"
+    else:
+        return "Baixa"
