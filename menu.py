@@ -1,4 +1,5 @@
 import gerenciador
+import motor
 
 def exibir_menu():
     print("\n" + "="*45)
@@ -68,3 +69,46 @@ def atualizar_rapido():
         print("Nenhum volume válido digitado.")
 
 def cadastrar_tela():
+    print("\n---Cadastrar Obra Nova---")
+    titulo = input("Nome da Obra: ").strip()
+    autor = input("Nome do Autor: ").strip()
+    editora = input("Editora: ").strip()
+
+    print("\nStatus: [1] Em Publicação  [2] Finalizado  [3] Hiato")
+    opcao_status = input("Qual status da obra (1/2/3): ").strip()
+    mapa_status = {"1": "Em Publicação", "2": "Finalizado", "3": "Hiato"}
+    status = mapa_status.get(opcao_status, "Em Publicação")
+
+    meta = int(input("Meta de Volumes Atual: "))
+
+    print("\nSe for um desejo que você ainda não tem nada, digite 0.")
+    vols_str = input("Quais volumes você já tem? (Separe por vírgula. Ex.: 1,2,3): ")
+
+    if vols_str.strip() == 0:
+        volumes = []
+    else:
+        volumes = [int(v.strip()) for v in vols_str.split(",") if v.strip().isdigit()]
+
+    hype = int(input("Seu nível de Hype (1 e 5): "))
+
+    nova_obra = {
+        "titulo": titulo,
+        "autor": autor,
+        "editora": editora,
+        "status": status,
+        "meta_volumes": meta,
+        "volumes_adquiridos": volumes,
+        "hype": hype,
+        "prioridade_editada": False
+    }
+
+    gerenciador.cadastrar_obra(nova_obra)
+    print(f"\n '{titulo}' cadastrado com sucesso!")
+
+def detalhes_obra(obra):
+    titulo = obra["titulo"]
+    print("\n" + "="*35)
+    print(f"DETALHES: {titulo.upper()}")
+    print(f"Autor: {obra.get('autor')} | Editora: {obra.get('editora')}")
+    print(f"Status: {obra.get('status')}")
+

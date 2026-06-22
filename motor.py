@@ -18,7 +18,7 @@ def calcaular_lacunas(meta_volumes, volumes_adquiridos):
         return False
     
     def definir_prioridade(ficha_manga):
-        if ficha_manga.get("trava_manual", False):
+        if ficha_manga.get("prioridade_editada", False):
             return ficha_manga.get("etiqueta_prioridade", "Sem Etiqueta")
     
     score = 0

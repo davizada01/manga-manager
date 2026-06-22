@@ -45,12 +45,12 @@ def atualizar_volumes(titulo, novos_volumes):
         return True
     return False
 
-def aplicar_override(titulo, nova_prioridade):
+def editar_prioridade(titulo, nova_prioridade):
     acervo = database.carregar_acervo()
 
     if titulo in acervo:
         obra = acervo [titulo]
-        obra["trava_manual"] = True
+        obra["prioridade_editada"] = True
         obra["etiqueta_prioridade"] = nova_prioridade
 
         database.salvar_acervo(acervo)
