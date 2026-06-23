@@ -21,5 +21,24 @@
         "hype": 4,
         "prioridade_editada": false,
         "etiqueta_prioridade": "Completo!"
+    },
+    "Hunter X Hunter": {
+        "titulo": "Hunter X Hunter",
+        "autor": "Yoshihiro Togashi",
+        "editora": "JBC",
+        "status": "Em Publicação",
+        "meta_volumes": 39,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4,
+            32,
+            33,
+            34
+        ],
+        "hype": 5,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Alta"
     }
 }

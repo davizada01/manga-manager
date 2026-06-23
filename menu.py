@@ -14,51 +14,68 @@ def exibir_menu():
     print("="*45)
 
 def painel_compras():
+    print("\n--- PAINEL DE COMPRAS ---")
     obras = gerenciador.listar_todas_obras()
+    
+    if not obras:
+        print("Nenhum mangá cadastrado no sistema.")
+        return
 
-    alvos_urgentes = []
-    alvos_altos = []
+    fila_urgente = []
+    fila_alta = []
+    fila_media = []
+    fila_baixa = []
 
     for titulo, dados in obras.items():
-        if len(dados.get("volumes_adquiridos", [])) > 0:
-            etiqueta = dados.get("etiqueta_prioridade", "")
-            if "URGENTE" in etiqueta:
-                alvos_urgentes.append((titulo, dados))
-            elif "Alta" in etiqueta:
-                alvos_altos.append((titulo, dados))
+        vols_na_mao = len(dados.get('volumes_adquiridos', []))
+        meta = dados.get('meta_volumes', 0)
+        etiqueta = str(dados.get("etiqueta_prioridade", ""))
+        
+        if (meta > 0 and vols_na_mao >= meta) or "completo" in etiqueta.lower() or "dropado" in etiqueta.lower():
+            continue
+            
+        progresso = f"{vols_na_mao}/{meta}" if meta > 0 else f"{vols_na_mao}/?"
+        linha_manga = f"{titulo} ({progresso})"
 
-    print("\n" + "!"*45)
-    print("FOCO MÁXIMO (URGENTES)")
-    if not alvos_urgentes:
-        print("Nenhuma obra urgente!")
-    else: 
-        for titulo, dados in alvos_urgentes:
-            lacunas = motor.calcular_lacunas(dados["meta_volumes"]), dados ["volumes_adquiridos"]
-            proximos = lacunas[:3]
-            print(f"- {titulo} | Faltam os vols: {proximos}...")
-    
-    print("\n" + "-"*45)
-    print("Próximos da Fila")
-    if not alvos_altos:
-        print("Nenhuma obra com prioridade alta no radar.")
+        if "Urgente" in etiqueta:
+            fila_urgente.append(f"Urgente  | {linha_manga}")
+        elif "Alta" in etiqueta:
+            fila_alta.append(f"Alta     | {linha_manga}")
+        elif "Média" in etiqueta:
+            fila_media.append(f"Média    | {linha_manga}")
+        else:
+            fila_baixa.append(f"Baixa    | {linha_manga}")
+
+    lista_final = fila_urgente + fila_alta + fila_media + fila_baixa
+
+    if not lista_final:
+        print("Tudo atualizado! Nenhuma compra pendente no radar.")
     else:
-        for titulo, dados in alvos_altos:
-            lacunas = motor.calcular_lacunas(dados["meta_volumes"], dados["volumes_adquiridos"])
-            proximos = lacunas[:3]
-            print(f"- {titulo} | Faltam os vols: {proximos}...")
-    print("!" *45)
-    input ("\n Pressione ENTER para voltar ao menu.")
-
+        for item in lista_final:
+            print(item)
+            
+    print("-" * 45)
+    input("Pressione ENTER para voltar ao menu: ")
+    
 def atualizar_rapido():
     print("\n--- Dar Baixa em Compras---")
-    
+
     obras = gerenciador.listar_todas_obras()
-    lista_titulos = list(obras.keys())
+    
+    lista_titulos = []
+    for titulo, dados in obras.items():
+        vols_na_mao = len(dados.get('volumes_adquiridos', []))
+        meta = dados.get('meta_volumes', 0)
+        etiqueta = str(dados.get("etiqueta_prioridade", ""))
+        
+        if (meta > 0 and vols_na_mao >= meta) or "completo" in etiqueta.lower() or "dropado" in etiqueta.lower():
+            continue
+        lista_titulos.append(titulo)
 
     if not lista_titulos:
-        print("Nenhuma obra cadastrada pra ser atualizada.")
+        print("Nenhuma obra pendente pra ser atualizada.")
         return
-    
+
     for i, titulo in enumerate(lista_titulos):
         print(f"[{i + 1}] {titulo}")
 
@@ -66,19 +83,19 @@ def atualizar_rapido():
 
     if escolha == "":
         return
-    
+
     if escolha.isdigit():
         indice = int(escolha) - 1
         if 0 <= indice < len(lista_titulos):
             titulo = lista_titulos[indice]
 
             vols_str = input(f"Quais volumes novos de '{titulo}' você comprou? (Separados por vírgula): ")
-            novos = [int(v.strip)() for v in vols_str.split(",") if v.strip().isdigit()]
+            novos = [int(v.strip()) for v in vols_str.split(",") if v.strip().isdigit()]
 
             if novos:
                 gerenciador.atualizar_volumes(titulo, novos)
                 print(f"Sucesso! Volumes de '{titulo}' atualizados.")
-                print(f"A prioridade '{titulo}' já foi recalculada automáticamente!!")
+                print(f"A prioridade '{titulo}' já foi recalculada automaticamente!!")
             else:
                 print("Nenhum volume válido digitado.")
         else:
@@ -144,7 +161,18 @@ def detalhes_obra(obra):
     print(f"Autor: {obra.get('autor')} | Editora: {obra.get('editora')}")
     print(f"Status: {obra.get('status')}")
     print(f"Hype: {obra.get('hype')}/5")
-    print(f"Volumes na mão: {obra.get('volumes_adquiridos')}")
+    
+    vols_na_mao = obra.get('volumes_adquiridos', [])
+    print(f"Volumes na mão: {vols_na_mao}")
+    
+    if vols_na_mao:
+        max_vol = max(vols_na_mao)
+        esperados = set(range(1, max_vol + 1))
+        adquiridos = set(vols_na_mao)
+        buracos = sorted(list(esperados - adquiridos))
+        if buracos:
+            print(f"Buracos na Coleção: {buracos}")
+
     print(f"Meta de volumes: {obra.get('meta_volumes')}")
     print(f"Etiqueta Atual: {obra.get('etiqueta_prioridade')}")
 
@@ -173,7 +201,7 @@ def ver_estante():
     print("\n--- SUA ESTANTE COMPLETA ---")
     
     lista_titulos = list (estante.keys())
-    
+
     for i, titulo in enumerate(lista_titulos):
         dados = estante[titulo]
         etiqueta = dados.get('etiqueta_prioridade')
@@ -187,9 +215,11 @@ def ver_estante():
             progresso = f"{vols_na_mao}/?"
 
         if etiqueta == "Completo!":
-            print(f"[{i + 1}] {titulo} | Completo!")
+            print(f"[{i + 1}] {titulo} ({progresso}) | Completo!")
+        elif "dropado" in str(etiqueta).lower():
+            print(f"[{i + 1}] {titulo} ({progresso}) | Dropado")
         else:
-            print(f"[{i + 1}] {titulo} | Prioridade: {etiqueta}")
+            print(f"[{i + 1}] {titulo} ({progresso}) | Prioridade: {etiqueta}")
     
     escolha = input("\nDigite o número da obra para ver detalhes (ou ENTER para voltar): ").strip()
 
