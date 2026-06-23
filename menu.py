@@ -162,16 +162,13 @@ def detalhes_obra(obra):
     print(f"Status: {obra.get('status')}")
     print(f"Hype: {obra.get('hype')}/5")
     
-    vols_na_mao = obra.get('volumes_adquiridos', [])
-    print(f"Volumes na mão: {vols_na_mao}")
+    # Exibe os volumes que você tem
+    print(f"Volumes na mão: {obra.get('volumes_adquiridos', [])}")
     
-    if vols_na_mao:
-        max_vol = max(vols_na_mao)
-        esperados = set(range(1, max_vol + 1))
-        adquiridos = set(vols_na_mao)
-        buracos = sorted(list(esperados - adquiridos))
-        if buracos:
-            print(f"Buracos na Coleção: {buracos}")
+    # Chama o motor para calcular e exibir os buracos, sem redundância
+    buracos = gerenciador.obter_lacunas(obra)
+    if buracos:
+        print(f"Buracos na Coleção: {buracos}")
 
     print(f"Meta de volumes: {obra.get('meta_volumes')}")
     print(f"Etiqueta Atual: {obra.get('etiqueta_prioridade')}")
@@ -187,7 +184,7 @@ def detalhes_obra(obra):
 
     if acao == "1":
         nova_etiqueta = input("Digite a Nova etiqueta exata (Ex.: Dropado, Máxima): ")
-        gerenciador.aplicar_override(titulo, nova_etiqueta)
+        gerenciador.definir_prioridade(titulo, nova_etiqueta)
         print("Etiqueta automática removida. O motor não mexe mais aqui.")
 
 def ver_estante():
