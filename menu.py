@@ -19,7 +19,7 @@ def painel_compras():
     alvos_urgentes = []
     alvos_altos = []
 
-    for titulo, dados in obras.itens():
+    for titulo, dados in obras.items():
         if len(dados.get("volumes_adquiridos", [])) > 0:
             etiqueta = dados.get("etiqueta_prioridade", "")
             if "URGENTE" in etiqueta:
@@ -111,4 +111,78 @@ def detalhes_obra(obra):
     print(f"DETALHES: {titulo.upper()}")
     print(f"Autor: {obra.get('autor')} | Editora: {obra.get('editora')}")
     print(f"Status: {obra.get('status')}")
+    print(f"Hype: {obra.get('hype')}/5")
+    print(f"Volumes na mão: {obra.get('volumes_adquiridos')}")
+    print(f"Meta de volumes: {obra.get('meta_volumes')}")
+    print(f"Etiqueta Atual: {obra.get('etiqueta_prioridade')}")
 
+    if obra.get("prioridade_editada"):
+        print("Prioridade Editada Manualmente")
+    print("="*35)
+
+    print("\n[1] Alterar Etiqueta")
+    print("[2] Voltar")
+
+    acao = input("O que deseja fazer? ").strip()
+
+    if acao == "1":
+        nova_etiqueta = input("Digite a Nova etiqueta exata (Ex.: Dropado, Máxima): ")
+        gerenciador.aplicar_override(titulo, nova_etiqueta)
+        print("Etiqueta automática removida. O motor não mexe mais aqui.")
+
+def ver_estante():
+    obras = gerenciador.listar_todas_obras()
+    estante = {k: v for k, v in obras.items() if len(v.get("volumes_adquiridos", [])) > 0}
+
+    if not estante:
+        print("\nSua estante está vazia.")
+        return
+    
+    print("\n--- SUA ESTANTE COMPLETA ---")
+    for titulo, dados in estante.items():
+        print(f"{titulo} | Prioridade: {dados.get('etiqueta_prioridade')}")
+
+    escolha = input("\nDigite o número exato da obra para ver os detalhes ou editar a prioridade (ou ENTER para voltar): ").strip()
+
+    if escolha in estante:
+        detalhes_obra(estante[escolha])
+    elif escolha:
+        print("Obra não encontrada.")
+
+def ver_wishlist():
+    obras = gerenciador.listar_todas_obras()
+    wishlist = {k: v for k, v in obras.items() if len (v.get("volumes_adquiridos", [])) == 0}
+    
+    if not wishlist:
+        print("\nSua Wishlist está vazia.")
+        return
+    
+    print("\n---WISHLIST---")
+    for titulo, dados in wishlist.items():
+        print(f"- {titulo} | Hype: {dados.get('hype')}/5 | Meta: {dados.get('meta_volumes')} vols")
+
+    input("\nPressione ENTER para voltar. ")
+
+def main():
+    while True:
+        exibir_menu()
+        opcao = input("Escolha o que quer fazer: ").strip()
+
+        if opcao == "1":
+            painel_compras()
+        elif opcao == "2":
+            atualizar_rapido()
+        elif opcao == "3":
+            ver_estante()
+        elif opcao == "4":
+            cadastrar_tela()
+        elif opcao == "5":
+            ver_wishlist()
+        elif opcao == "6":
+            print("\nFechando...")
+            break
+        else:
+            print("\nComando inválido. Tente novamente.")
+
+if __name__ == "__main__":
+    main()
