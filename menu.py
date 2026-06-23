@@ -51,22 +51,42 @@ def painel_compras():
 
 def atualizar_rapido():
     print("\n--- Dar Baixa em Compras---")
-    titulo = input("Qual obra chegou? (Digite o nome exato!): ").strip()
-
+    
     obras = gerenciador.listar_todas_obras()
-    if titulo not in obras:
-        print("Obra não Encotrada. Verifique o nome na Estante.")
+    lista_titulos = list(obras.keys())
+
+    if not lista_titulos:
+        print("Nenhuma obra cadastrada pra ser atualizada.")
         return
     
-    vols_str = input(f"Quais volumes novos de {titulo} você comprou? (Separe com vírgula): ")
-    novos = [int(v.strip()) for v in vols_str.split(",") if v.strip().isdigit()]
+    for i, titulo in enumerate(lista_titulos):
+        print(f"[{i + 1}] {titulo}")
 
-    if novos:
-        gerenciador.atualizar_volumes(titulo, novos)
-        print(f"Sucesso! Volumes de '{titulo} atualizados.")
-        print("A etiqueta de prioridade dessa obra foi atualizada automaticamente!")
+    escolha = input("\nQual obra chegou? (Digite o NÚMERO ou ENTER para voltar): ").strip()
+
+    if escolha == "":
+        return
+    
+    if escolha.isdigit():
+        indice = int(escolha) - 1
+        if 0 <= indice < len(lista_titulos):
+            titulo = lista_titulos[indice]
+
+            vols_str = input(f"Quais volumes novos de '{titulo}' você comprou? (Separados por vírgula): ")
+            novos = [int(v.strip)() for v in vols_str.split(",") if v.strip().isdigit()]
+
+            if novos:
+                gerenciador.atualizar_volumes(titulo, novos)
+                print(f"Sucesso! Volumes de '{titulo}' atualizados.")
+                print(f"A prioridade '{titulo}' já foi recalculada automáticamente!!")
+            else:
+                print("Nenhum volume válido digitado.")
+        else:
+            print("Número não foi encontrado na lista.")
     else:
-        print("Nenhum volume válido digitado.")
+        print("Por favor, digite apenas números.")
+
+
 
 def cadastrar_tela():
     print("\n---Cadastrar Obra Nova---")
@@ -156,7 +176,20 @@ def ver_estante():
     
     for i, titulo in enumerate(lista_titulos):
         dados = estante[titulo]
-        print(f"[{i + 1}] {titulo} | Prioridade: {dados.get('etiqueta_prioridade')}")
+        etiqueta = dados.get('etiqueta_prioridade')
+
+        vols_na_mao = len(dados.get('volumes_adquiridos', []))
+        meta = dados.get('meta_volumes', 0)
+
+        if meta > 0:
+            progresso = f"{vols_na_mao}/{meta}"
+        else:
+            progresso = f"{vols_na_mao}/?"
+
+        if etiqueta == "Completo!":
+            print(f"[{i + 1}] {titulo} | Completo!")
+        else:
+            print(f"[{i + 1}] {titulo} | Prioridade: {etiqueta}")
     
     escolha = input("\nDigite o número da obra para ver detalhes (ou ENTER para voltar): ").strip()
 
@@ -173,7 +206,7 @@ def ver_estante():
             print("Número não encontrado na lista.")
     else:
         print("Por favor, digite NÚMEROS.")
-        
+
 def ver_wishlist():
     obras = gerenciador.listar_todas_obras()
     wishlist = {k: v for k, v in obras.items() if len (v.get("volumes_adquiridos", [])) == 0}
@@ -183,8 +216,10 @@ def ver_wishlist():
         return
     
     print("\n---WISHLIST---")
-    for titulo, dados in wishlist.items():
-        print(f"- {titulo} | Hype: {dados.get('hype')}/5 | Meta: {dados.get('meta_volumes')} vols")
+    lista_titulos = list(wishlist.keys())
+    for i, titulo in enumerate(lista_titulos):
+        dados = wishlist[titulo]
+        print(f"[{i + 1}] {titulo} | Hype: {dados.get('hype')}/5 | Meta: {dados.get('meta_volumes')} vols")
 
     input("\nPressione ENTER para voltar. ")
 
