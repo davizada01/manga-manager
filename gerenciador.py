@@ -2,7 +2,7 @@ import database
 import motor
 
 def cadastrar_obra(nova_obra):
-    acervo = database.carregar_acervo
+    acervo = database.carregar_acervo()
     titulo = nova_obra["titulo"]
 
     etiqueta = motor.definir_prioridade(nova_obra)

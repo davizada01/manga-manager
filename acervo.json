@@ -1,1 +1,25 @@
-{}
+{
+    "Wotakoi - Amor É Difícil Para Otakus": {
+        "titulo": "Wotakoi - Amor É Difícil Para Otakus",
+        "autor": "Fujita",
+        "editora": "Panini",
+        "status": "Finalizado",
+        "meta_volumes": 11,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+        ],
+        "hype": 4,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Alta"
+    }
+}

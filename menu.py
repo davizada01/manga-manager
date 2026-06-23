@@ -79,7 +79,19 @@ def cadastrar_tela():
     mapa_status = {"1": "Em Publicação", "2": "Finalizado", "3": "Hiato"}
     status = mapa_status.get(opcao_status, "Em Publicação")
 
-    meta = int(input("Meta de Volumes Atual: "))
+    if status == "Finalizado":
+        mensagem_meta = "Quantos volumes totais a obra tem? "
+    elif status == "Hiato":
+        mensagem_meta = "Em qual volume a obra parou? "
+    else:
+        mensagem_meta = "Quantos volumes já lançaram? "
+
+    while True:
+        try:
+            meta = int (input(mensagem_meta))
+            break
+        except ValueError:
+            print("Erro: Digite apenas o número único (Ex.: 25)")
 
     print("\nSe for um desejo que você ainda não tem nada, digite 0.")
     vols_str = input("Quais volumes você já tem? (Separe por vírgula. Ex.: 1,2,3): ")
@@ -139,16 +151,29 @@ def ver_estante():
         return
     
     print("\n--- SUA ESTANTE COMPLETA ---")
-    for titulo, dados in estante.items():
-        print(f"{titulo} | Prioridade: {dados.get('etiqueta_prioridade')}")
+    
+    lista_titulos = list (estante.keys())
+    
+    for i, titulo in enumerate(lista_titulos):
+        dados = estante[titulo]
+        print(f"[{i + 1}] {titulo} | Prioridade: {dados.get('etiqueta_prioridade')}")
+    
+    escolha = input("\nDigite o número da obra para ver detalhes (ou ENTER para voltar): ").strip()
 
-    escolha = input("\nDigite o número exato da obra para ver os detalhes ou editar a prioridade (ou ENTER para voltar): ").strip()
+    if escolha == "":
+        return
 
-    if escolha in estante:
-        detalhes_obra(estante[escolha])
-    elif escolha:
-        print("Obra não encontrada.")
+    if escolha.isdigit():
+        indice = int(escolha) - 1
 
+        if 0 <= indice < len(lista_titulos):
+            titulo_escolhido = lista_titulos[indice]
+            detalhes_obra(estante[titulo_escolhido])
+        else:
+            print("Número não encontrado na lista.")
+    else:
+        print("Por favor, digite NÚMEROS.")
+        
 def ver_wishlist():
     obras = gerenciador.listar_todas_obras()
     wishlist = {k: v for k, v in obras.items() if len (v.get("volumes_adquiridos", [])) == 0}
