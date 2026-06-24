@@ -38,6 +38,101 @@
             34
         ],
         "hype": 5,
+        "prioridade_editada": true,
+        "etiqueta_prioridade": "Urgente"
+    },
+    "Yu Yu Hakusho": {
+        "titulo": "Yu Yu Hakusho",
+        "autor": "Yoshihiro Togashi",
+        "editora": "JBC",
+        "status": "Finalizado",
+        "meta_volumes": 19,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "JoJo's Bizarre Adventure - Part 7: Steel Ball Run": {
+        "titulo": "JoJo's Bizarre Adventure - Part 7: Steel Ball Run",
+        "autor": "Hirohiko Araki",
+        "editora": "Panini",
+        "status": "Finalizado",
+        "meta_volumes": 16,
+        "volumes_adquiridos": [
+            1,
+            3,
+            4,
+            5
+        ],
+        "hype": 5,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "URGENTE"
+    },
+    "Demon Slayer": {
+        "titulo": "Demon Slayer",
+        "autor": "Koyoharu Gotouge",
+        "editora": "Panini",
+        "status": "Finalizado",
+        "meta_volumes": 23,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23
+        ],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Alta"
+    },
+    "Look Back": {
+        "titulo": "Look Back",
+        "autor": "Tatsuki Fujimoto",
+        "editora": "Panini",
+        "status": "Finalizado",
+        "meta_volumes": 1,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 4,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
+    },
+    "Adeus, Eri": {
+        "titulo": "Adeus, Eri",
+        "autor": "Tatsuki Fujimoto",
+        "editora": "JBC",
+        "status": "Finalizado",
+        "meta_volumes": 1,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
+    },
+    "Fragrant Flowers Blooms With Dignity": {
+        "titulo": "Fragrant Flowers Blooms With Dignity",
+        "autor": "Saka Mikami",
+        "editora": "MPEG",
+        "status": "Em Publicação",
+        "meta_volumes": 7,
+        "volumes_adquiridos": [
+            1,
+            2
+        ],
+        "hype": 4,
         "prioridade_editada": false,
         "etiqueta_prioridade": "Alta"
     }

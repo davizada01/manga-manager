@@ -1,4 +1,4 @@
-def calcaular_lacunas(meta_volumes, volumes_adquiridos):
+def calcular_lacunas(meta_volumes, volumes_adquiridos):
     if meta_volumes <= 0:
         return []
     
@@ -22,7 +22,7 @@ def definir_prioridade(ficha_manga):
             return ficha_manga.get("etiqueta_prioridade", "Sem Etiqueta")
         
         meta = ficha_manga.get("meta_volumes", 0)
-        vols = ficha_manga.get("etiqueta_prioridade", "Sem Etiqueta")
+        vols = ficha_manga.get("volumes_adquiridos", [])
 
         if meta > 0 and len (vols) >= meta:
             return "Completo!"
@@ -38,16 +38,13 @@ def definir_prioridade(ficha_manga):
             score += 15
         elif status == "Hiato":
             score += 10
-    
-        meta = ficha_manga.get("meta_volumes", 0)
-        vols_adquiridos = ficha_manga.get("volumes_adquiridos", [])
 
-        lacunas = calcaular_lacunas(meta, vols_adquiridos)
+        lacunas = calcular_lacunas(meta, vols)
 
         if 0 < len(lacunas) <= 5:
             score += 20
 
-        if tem_buraco_isolado(vols_adquiridos):
+        if tem_buraco_isolado(vols):
             score += 10
 
         if score >= 80:

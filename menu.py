@@ -37,11 +37,13 @@ def painel_compras():
         progresso = f"{vols_na_mao}/{meta}" if meta > 0 else f"{vols_na_mao}/?"
         linha_manga = f"{titulo} ({progresso})"
 
-        if "Urgente" in etiqueta:
+        etiqueta_minuscula = etiqueta.lower()
+
+        if "urgente" in etiqueta_minuscula:
             fila_urgente.append(f"Urgente  | {linha_manga}")
-        elif "Alta" in etiqueta:
+        elif "alta" in etiqueta_minuscula:
             fila_alta.append(f"Alta     | {linha_manga}")
-        elif "Média" in etiqueta:
+        elif "media" in etiqueta_minuscula or "media" in etiqueta_minuscula:
             fila_media.append(f"Média    | {linha_manga}")
         else:
             fila_baixa.append(f"Baixa    | {linha_manga}")
@@ -133,12 +135,15 @@ def cadastrar_tela():
     print("\nSe for um desejo que você ainda não tem nada, digite 0.")
     vols_str = input("Quais volumes você já tem? (Separe por vírgula. Ex.: 1,2,3): ")
 
-    if vols_str.strip() == 0:
+    if vols_str.strip() == "0":
         volumes = []
     else:
         volumes = [int(v.strip()) for v in vols_str.split(",") if v.strip().isdigit()]
 
-    hype = int(input("Seu nível de Hype (1 e 5): "))
+    if meta > 0 and len (volumes) >= meta:
+        hype = 1
+    else:
+        hype = int(input("Seu nível de Hype (1 e 5): "))
 
     nova_obra = {
         "titulo": titulo,
@@ -160,12 +165,13 @@ def detalhes_obra(obra):
     print(f"DETALHES: {titulo.upper()}")
     print(f"Autor: {obra.get('autor')} | Editora: {obra.get('editora')}")
     print(f"Status: {obra.get('status')}")
-    print(f"Hype: {obra.get('hype')}/5")
+
+    etiqueta_atual = str(obra.get("etiqueta_prioridade", "")).lower()
+    if "completo" not in etiqueta_atual:
+        print(f"Hype: {obra.get('hype')}/5")
     
-    # Exibe os volumes que você tem
     print(f"Volumes na mão: {obra.get('volumes_adquiridos', [])}")
     
-    # Chama o motor para calcular e exibir os buracos, sem redundância
     buracos = gerenciador.obter_lacunas(obra)
     if buracos:
         print(f"Buracos na Coleção: {buracos}")
@@ -183,8 +189,8 @@ def detalhes_obra(obra):
     acao = input("O que deseja fazer? ").strip()
 
     if acao == "1":
-        nova_etiqueta = input("Digite a Nova etiqueta exata (Ex.: Dropado, Máxima): ")
-        gerenciador.definir_prioridade(titulo, nova_etiqueta)
+        nova_etiqueta = input("Digite a Nova etiqueta exata (Ex.: Dropado, Máxima ou alguma existente: : ")
+        gerenciador.editar_prioridade(titulo, nova_etiqueta)
         print("Etiqueta automática removida. O motor não mexe mais aqui.")
 
 def ver_estante():
@@ -216,7 +222,7 @@ def ver_estante():
         elif "dropado" in str(etiqueta).lower():
             print(f"[{i + 1}] {titulo} ({progresso}) | Dropado")
         else:
-            print(f"[{i + 1}] {titulo} ({progresso}) | Prioridade: {etiqueta}")
+            print(f"[{i + 1}] {titulo} ({progresso}) | Prioridade: {str(etiqueta).title()}")
     
     escolha = input("\nDigite o número da obra para ver detalhes (ou ENTER para voltar): ").strip()
 
