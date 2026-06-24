@@ -39,3 +39,25 @@ def obter_lacunas(obra):
     if not vols: return []
     completo = set(range(1, max(vols) + 1))
     return sorted(list(completo - set(vols)))
+
+def deletar_obra(titulo):
+    acervo = database.carregar_acervo()
+    if titulo in acervo:
+        del acervo[titulo]
+        database.salvar_acervo(acervo)
+        return True
+    return False
+
+def editar_detalhes_obra(titulo, novos_dados):
+    acervo = database.carregar_acervo()
+    if titulo in acervo:
+        obra = acervo[titulo]
+
+        for chave, valor in novos_dados.items():
+            obra[chave] = valor
+
+        obra["etiqueta_prioridade"] = motor.definir_prioridade(obra)
+
+        database.salvar_acervo(acervo)
+        return True
+    return False

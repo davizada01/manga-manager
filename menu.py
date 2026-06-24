@@ -112,6 +112,9 @@ def cadastrar_tela():
     titulo = input("Nome da Obra: ").strip()
     autor = input("Nome do Autor: ").strip()
     editora = input("Editora: ").strip()
+    genero_str = input("Gêneros (Separe por vírgula): ").strip()
+    genero = [g.strip().title() for g in genero_str.split(",")] if genero_str else[]
+    ano = input("Período de Lançamento (Ex.: 1999 - Atual, 2015 - 2025): ").strip()
 
     print("\nStatus: [1] Em Publicação  [2] Finalizado  [3] Hiato")
     opcao_status = input("Qual status da obra (1/2/3): ").strip()
@@ -149,6 +152,8 @@ def cadastrar_tela():
         "titulo": titulo,
         "autor": autor,
         "editora": editora,
+        "genero": genero,
+        "ano_lancamento": ano, 
         "status": status,
         "meta_volumes": meta,
         "volumes_adquiridos": volumes,
@@ -163,6 +168,8 @@ def detalhes_obra(obra):
     titulo = obra["titulo"]
     print("\n" + "="*35)
     print(f"DETALHES: {titulo.upper()}")
+    print(f"Gênero: {obra.get('genero', 'Não definido')}")
+    print(f"Período de Lançamento: {obra.get('ano_lancamento', 'Não definido')}")
     print(f"Autor: {obra.get('autor')} | Editora: {obra.get('editora')}")
     print(f"Status: {obra.get('status')}")
 
@@ -183,15 +190,47 @@ def detalhes_obra(obra):
         print("Prioridade Editada Manualmente")
     print("="*35)
 
-    print("\n[1] Alterar Etiqueta")
-    print("[2] Voltar")
+    print("\n[1] Editar Detalhes")
+    print("[2] Alterar Etiqueta Manualmente")
+    print("[3] Deletar Obra")
+    print("[4] Voltar")
 
     acao = input("O que deseja fazer? ").strip()
 
     if acao == "1":
+        print("\n=== Editando: {titulo} ===")
+        print("(Aperte ENTER sem digitar nada para manter o valor atual)")
+
+        generos_atuais = obra.get('genero', [])
+        textos_generos_atuais = ", ".join(generos_atuais) if isinstance(generos_atuais, list) else generos_atuais
+
+        novo_genero_str = input(f"Gêneros atuais ({textos_generos_atuais})[separe por vírgula]: ").strip()
+        novo_ano = input(f"Época atual ({obra.get('ano_lancamento', 'Não definido')}): ").strip()
+        novo_meta = input(f"Último Volume lançado / Meta atual ({obra.get('meta_volumes')}): ").strip()
+        novo_status = input(f"Status Atual ({obra.get('status')}): ").strip()
+
+        novos_dados = {}
+        if novo_genero: novos_dados["genero"] = novo_genero
+        if novo_ano: novos_dados["ano_lancamento"] = novo_ano
+        if novo_status: novos_dados["status"] = novo_status
+        if novo_meta.isdigit(): novos_dados["meta_volumes"] = int(novo_meta)
+
+        if novos_dados:
+            gerenciador.editar_detalhes_obra(titulo, novos_dados)
+            print("Detalhes atualizados com sucesso!")
+        else: 
+            print("Nenhuma alteração foi feita.")
+
+    if acao == "2":
         nova_etiqueta = input("Digite a Nova etiqueta exata (Ex.: Dropado, Máxima ou alguma existente: : ")
         gerenciador.editar_prioridade(titulo, nova_etiqueta)
         print("Etiqueta automática removida. O motor não mexe mais aqui.")
+
+    if acao == "3":
+        certeza = input(f"Tem certeza que deseja DELETAR '{titulo}? (S/N): ").strip().upper()
+        if certeza == "S":
+            gerenciador.deletar_obra(titulo)
+            print(f"\nObra'{titulo}' deletada.")
 
 def ver_estante():
     obras = gerenciador.listar_todas_obras()
