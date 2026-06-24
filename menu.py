@@ -43,7 +43,7 @@ def painel_compras():
             fila_urgente.append(f"Urgente  | {linha_manga}")
         elif "alta" in etiqueta_minuscula:
             fila_alta.append(f"Alta     | {linha_manga}")
-        elif "media" in etiqueta_minuscula or "media" in etiqueta_minuscula:
+        elif "média" in etiqueta_minuscula or "media" in etiqueta_minuscula:
             fila_media.append(f"Média    | {linha_manga}")
         else:
             fila_baixa.append(f"Baixa    | {linha_manga}")
@@ -114,7 +114,10 @@ def cadastrar_tela():
     editora = input("Editora: ").strip()
     genero_str = input("Gêneros (Separe por vírgula): ").strip()
     genero = [g.strip().title() for g in genero_str.split(",")] if genero_str else[]
-    ano = input("Período de Lançamento (Ex.: 1999 - Atual, 2015 - 2025): ").strip()
+    ano_inicio = input("Ano de Início (Ex: 1999): ").strip()
+    ano_fim = input("Ano de Fim (Ex: 2014, ou deixe em branco se ainda lança): ").strip()
+    if not ano_fim:
+        ano_fim = "Atual"
 
     print("\nStatus: [1] Em Publicação  [2] Finalizado  [3] Hiato")
     opcao_status = input("Qual status da obra (1/2/3): ").strip()
@@ -153,7 +156,8 @@ def cadastrar_tela():
         "autor": autor,
         "editora": editora,
         "genero": genero,
-        "ano_lancamento": ano, 
+        "ano_inicio": ano_inicio,
+        "ano_fim": ano_fim,
         "status": status,
         "meta_volumes": meta,
         "volumes_adquiridos": volumes,
@@ -168,8 +172,16 @@ def detalhes_obra(obra):
     titulo = obra["titulo"]
     print("\n" + "="*35)
     print(f"DETALHES: {titulo.upper()}")
-    print(f"Gênero: {obra.get('genero', 'Não definido')}")
-    print(f"Período de Lançamento: {obra.get('ano_lancamento', 'Não definido')}")
+    generos_salvos = obra.get('genero', [])
+    generos_formatados = ", ".join(generos_salvos) if isinstance(generos_salvos, list) else generos_salvos
+    print(f"Gêneros: {generos_formatados if generos_formatados else 'Não definido'}")
+    ano_inicio = obra.get('ano_inicio', '')
+    ano_fim = obra.get('ano_fim', '')
+    
+    if ano_inicio or ano_fim:
+        print(f"Período de Lançamento: {ano_inicio if ano_inicio else '?'} - {ano_fim if ano_fim else 'Atual'}")
+    else:
+        print("Período de Lançamento: Não definido")
     print(f"Autor: {obra.get('autor')} | Editora: {obra.get('editora')}")
     print(f"Status: {obra.get('status')}")
 
@@ -205,15 +217,25 @@ def detalhes_obra(obra):
         textos_generos_atuais = ", ".join(generos_atuais) if isinstance(generos_atuais, list) else generos_atuais
 
         novo_genero_str = input(f"Gêneros atuais ({textos_generos_atuais})[separe por vírgula]: ").strip()
-        novo_ano = input(f"Época atual ({obra.get('ano_lancamento', 'Não definido')}): ").strip()
+        atual_inicio = obra.get('ano_inicio', 'Não definido')
+        atual_fim = obra.get('ano_fim', 'Não definido')
+        
+        novo_ano_inicio = input(f"Ano Início atual ({atual_inicio}): ").strip()
+        novo_ano_fim = input(f"Ano Fim atual ({atual_fim}): ").strip()
         novo_meta = input(f"Último Volume lançado / Meta atual ({obra.get('meta_volumes')}): ").strip()
         novo_status = input(f"Status Atual ({obra.get('status')}): ").strip()
 
         novos_dados = {}
-        if novo_genero: novos_dados["genero"] = novo_genero
-        if novo_ano: novos_dados["ano_lancamento"] = novo_ano
-        if novo_status: novos_dados["status"] = novo_status
-        if novo_meta.isdigit(): novos_dados["meta_volumes"] = int(novo_meta)
+        if novo_genero_str: 
+            novos_dados["genero"] = [g.strip().title() for g in novo_genero_str.split(",")]
+        if novo_ano_inicio: 
+            novos_dados["ano_inicio"] = novo_ano_inicio
+        if novo_ano_fim: 
+            novos_dados["ano_fim"] = novo_ano_fim
+        if novo_status: 
+            novos_dados["status"] = novo_status
+        if novo_meta.isdigit(): 
+            novos_dados["meta_volumes"] = int(novo_meta)
 
         if novos_dados:
             gerenciador.editar_detalhes_obra(titulo, novos_dados)

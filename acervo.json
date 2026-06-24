@@ -20,7 +20,14 @@
         ],
         "hype": 4,
         "prioridade_editada": false,
-        "etiqueta_prioridade": "Completo!"
+        "etiqueta_prioridade": "Completo!",
+        "genero": [
+            "Romance",
+            "Comédia",
+            "Slice Of Life"
+        ],
+        "ano_inicio": "2014",
+        "ano_fim": "2021"
     },
     "Hunter X Hunter": {
         "titulo": "Hunter X Hunter",
@@ -39,7 +46,13 @@
         ],
         "hype": 5,
         "prioridade_editada": true,
-        "etiqueta_prioridade": "Urgente"
+        "etiqueta_prioridade": "Urgente",
+        "genero": [
+            "Ação",
+            "Fantasia",
+            "Aventura"
+        ],
+        "ano_inicio": "1998"
     },
     "Yu Yu Hakusho": {
         "titulo": "Yu Yu Hakusho",
@@ -54,8 +67,16 @@
             4
         ],
         "hype": 3,
-        "prioridade_editada": false,
-        "etiqueta_prioridade": "Média"
+        "prioridade_editada": true,
+        "etiqueta_prioridade": "Alta",
+        "genero": [
+            "Ação",
+            "Comédia",
+            "Sobrenatural",
+            "Drama"
+        ],
+        "ano_inicio": "1990",
+        "ano_fim": "1994"
     },
     "JoJo's Bizarre Adventure - Part 7: Steel Ball Run": {
         "titulo": "JoJo's Bizarre Adventure - Part 7: Steel Ball Run",
@@ -71,7 +92,14 @@
         ],
         "hype": 5,
         "prioridade_editada": false,
-        "etiqueta_prioridade": "URGENTE"
+        "etiqueta_prioridade": "URGENTE",
+        "genero": [
+            "Ação",
+            "Aventura",
+            "Sobrenatural"
+        ],
+        "ano_inicio": "2004",
+        "ano_fim": "2011"
     },
     "Demon Slayer": {
         "titulo": "Demon Slayer",
@@ -135,5 +163,37 @@
         "hype": 4,
         "prioridade_editada": false,
         "etiqueta_prioridade": "Alta"
+    },
+    "Tokyo Ghoul": {
+        "titulo": "Tokyo Ghoul",
+        "autor": "Sui Ishida",
+        "editora": "Panini",
+        "genero": [
+            "Terror",
+            "Sobrenatural"
+        ],
+        "ano_inicio": "2011",
+        "ano_fim": "2014",
+        "status": "Finalizado",
+        "meta_volumes": 14,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
     }
 }
