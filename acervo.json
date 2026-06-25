@@ -121,34 +121,14 @@
             23
         ],
         "hype": 3,
-        "prioridade_editada": false,
-        "etiqueta_prioridade": "Alta"
-    },
-    "Look Back": {
-        "titulo": "Look Back",
-        "autor": "Tatsuki Fujimoto",
-        "editora": "Panini",
-        "status": "Finalizado",
-        "meta_volumes": 1,
-        "volumes_adquiridos": [
-            1
+        "prioridade_editada": true,
+        "etiqueta_prioridade": "Média",
+        "genero": [
+            "Ação",
+            "Fantasia"
         ],
-        "hype": 4,
-        "prioridade_editada": false,
-        "etiqueta_prioridade": "Completo!"
-    },
-    "Adeus, Eri": {
-        "titulo": "Adeus, Eri",
-        "autor": "Tatsuki Fujimoto",
-        "editora": "JBC",
-        "status": "Finalizado",
-        "meta_volumes": 1,
-        "volumes_adquiridos": [
-            1
-        ],
-        "hype": 1,
-        "prioridade_editada": false,
-        "etiqueta_prioridade": "Completo!"
+        "ano_inicio": "2016",
+        "ano_fim": "2020"
     },
     "Fragrant Flowers Blooms With Dignity": {
         "titulo": "Fragrant Flowers Blooms With Dignity",
@@ -161,8 +141,13 @@
             2
         ],
         "hype": 4,
-        "prioridade_editada": false,
-        "etiqueta_prioridade": "Alta"
+        "prioridade_editada": true,
+        "etiqueta_prioridade": "Média",
+        "genero": [
+            "Romance",
+            "Drama"
+        ],
+        "ano_inicio": "2021"
     },
     "Tokyo Ghoul": {
         "titulo": "Tokyo Ghoul",
@@ -195,5 +180,312 @@
         "hype": 1,
         "prioridade_editada": false,
         "etiqueta_prioridade": "Completo!"
+    },
+    "Adeus, Eri": {
+        "titulo": "Adeus, Eri",
+        "autor": "Tatsuki Fujimoto",
+        "editora": "Panini",
+        "genero": [
+            "Drama"
+        ],
+        "ano_inicio": "2021",
+        "ano_fim": "2021",
+        "status": "Finalizado",
+        "meta_volumes": 1,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
+    },
+    "Look Back": {
+        "titulo": "Look Back",
+        "autor": "Tatsuki Fujimoto",
+        "editora": "Panini",
+        "genero": [
+            "Drama"
+        ],
+        "ano_inicio": "2021",
+        "ano_fim": "2021",
+        "status": "Finalizado",
+        "meta_volumes": 1,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
+    },
+    "Berserk": {
+        "titulo": "Berserk",
+        "autor": "Kentaro Miura",
+        "editora": "Panini",
+        "genero": [
+            "Fantasia",
+            "Ação",
+            "Terror",
+            "Fantasia"
+        ],
+        "ano_inicio": "1989",
+        "ano_fim": "Atual",
+        "status": "Em Publicação",
+        "meta_volumes": 43,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 2,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Baixa"
+    },
+    "Your Name": {
+        "titulo": "Your Name",
+        "autor": "Makoto Shinkai",
+        "editora": "JBC",
+        "genero": [
+            "Drama",
+            "Romance"
+        ],
+        "ano_inicio": "2016",
+        "ano_fim": "2017",
+        "status": "Finalizado",
+        "meta_volumes": 1,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
+    },
+    "Solanin": {
+        "titulo": "Solanin",
+        "autor": "Inio Asano",
+        "editora": "L&PM",
+        "genero": [
+            "Drama"
+        ],
+        "ano_inicio": "2005",
+        "ano_fim": "2006",
+        "status": "Finalizado",
+        "meta_volumes": 1,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
+    },
+    "Monster": {
+        "titulo": "Monster",
+        "autor": "Naoki Urasawa",
+        "editora": "Panini",
+        "genero": [
+            "Suspense",
+            "Drama"
+        ],
+        "ano_inicio": "1994",
+        "ano_fim": "2001",
+        "status": "Finalizado",
+        "meta_volumes": 9,
+        "volumes_adquiridos": [
+            1
+        ],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Fullmetal Alchemist": {
+        "titulo": "Fullmetal Alchemist",
+        "autor": "Hiromu Arakawa",
+        "editora": "JBC",
+        "genero": [
+            "Ação",
+            "Aventura",
+            "Drama",
+            "Fantasia"
+        ],
+        "ano_inicio": "2001",
+        "ano_fim": "2010",
+        "status": "Finalizado",
+        "meta_volumes": 27,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            18,
+            21
+        ],
+        "hype": 4,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Alta"
+    },
+    "Nana": {
+        "titulo": "Nana",
+        "autor": "Ai Yazawa",
+        "editora": "JBC",
+        "genero": [
+            "Romance",
+            "Drama",
+            "Música"
+        ],
+        "ano_inicio": "2000",
+        "ano_fim": "2009",
+        "status": "Hiato",
+        "meta_volumes": 21,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "hype": 4,
+        "prioridade_editada": true,
+        "etiqueta_prioridade": "Alta"
+    },
+    "Omori": {
+        "titulo": "Omori",
+        "autor": "Omocat",
+        "editora": "MPEG",
+        "genero": [
+            "Terror",
+            "Drama"
+        ],
+        "ano_inicio": "2024",
+        "ano_fim": "Atual",
+        "status": "Em Publicação",
+        "meta_volumes": 3,
+        "volumes_adquiridos": [
+            1,
+            2
+        ],
+        "hype": 2,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "I Sold My Life For Ten Thousand Yen Per Year": {
+        "titulo": "I Sold My Life For Ten Thousand Yen Per Year",
+        "autor": "Sugaru Miaki",
+        "editora": "JCB",
+        "genero": [
+            "Romance",
+            "Drama",
+            "Sobrenatural"
+        ],
+        "ano_inicio": "2016",
+        "ano_fim": "2017",
+        "status": "Finalizado",
+        "meta_volumes": 3,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Completo!"
+    },
+    "Bakemonogatari": {
+        "titulo": "Bakemonogatari",
+        "autor": "Nisio Isin",
+        "editora": "Panini",
+        "genero": [
+            "Ação",
+            "Sobrenatural",
+            "Romance",
+            "Comédia",
+            "Drama"
+        ],
+        "ano_inicio": "2018",
+        "ano_fim": "2023",
+        "status": "Finalizado",
+        "meta_volumes": 22,
+        "volumes_adquiridos": [
+            2,
+            3,
+            7
+        ],
+        "hype": 2,
+        "prioridade_editada": true,
+        "etiqueta_prioridade": "Média"
+    },
+    "Nisekoi": {
+        "titulo": "Nisekoi",
+        "autor": "Naoshi Komi",
+        "editora": "Panini",
+        "genero": [
+            "Comédia",
+            "Romance"
+        ],
+        "ano_inicio": "2011",
+        "ano_fim": "2016",
+        "status": "Finalizado",
+        "meta_volumes": 25,
+        "volumes_adquiridos": [
+            11,
+            12
+        ],
+        "hype": 1,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Baixa"
+    },
+    "Spy X Family": {
+        "titulo": "Spy X Family",
+        "autor": "Tatsuya Endo",
+        "editora": "Panini",
+        "genero": [
+            "Ação",
+            "Comédia"
+        ],
+        "ano_inicio": "2019",
+        "ano_fim": "Atual",
+        "status": "Em Publicação",
+        "meta_volumes": 17,
+        "volumes_adquiridos": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+        ],
+        "hype": 4,
+        "prioridade_editada": true,
+        "etiqueta_prioridade": "Alta"
+    },
+    "Paradise Kiss": {
+        "titulo": "Paradise Kiss",
+        "autor": "Ai Yazawa",
+        "editora": "Panini",
+        "genero": [
+            "Romance",
+            "Drama",
+            "Artes Visuais"
+        ],
+        "ano_inicio": "1999",
+        "ano_fim": "2003",
+        "status": "Finalizado",
+        "meta_volumes": 5,
+        "volumes_adquiridos": [],
+        "hype": 4,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Alta"
     }
 }

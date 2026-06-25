@@ -210,7 +210,7 @@ def detalhes_obra(obra):
     acao = input("O que deseja fazer? ").strip()
 
     if acao == "1":
-        print("\n=== Editando: {titulo} ===")
+        print(f"\n=== Editando: '{titulo}' ===")
         print("(Aperte ENTER sem digitar nada para manter o valor atual)")
 
         generos_atuais = obra.get('genero', [])
@@ -249,7 +249,7 @@ def detalhes_obra(obra):
         print("Etiqueta automática removida. O motor não mexe mais aqui.")
 
     if acao == "3":
-        certeza = input(f"Tem certeza que deseja DELETAR '{titulo}? (S/N): ").strip().upper()
+        certeza = input(f"Tem certeza que deseja DELETAR '{titulo}'? (S/N): ").strip().upper()
         if certeza == "S":
             gerenciador.deletar_obra(titulo)
             print(f"\nObra'{titulo}' deletada.")

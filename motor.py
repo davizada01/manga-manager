@@ -41,8 +41,10 @@ def definir_prioridade(ficha_manga):
 
         lacunas = calcular_lacunas(meta, vols)
 
-        if 0 < len(lacunas) <= 5:
-            score += 20
+        if meta > 0:
+            porcentagem = (len(vols) / meta * 100)
+            if porcentagem >= 80 and len(lacunas) > 0:
+                score += 30
 
         if tem_buraco_isolado(vols):
             score += 10
