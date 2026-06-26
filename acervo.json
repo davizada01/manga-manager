@@ -487,5 +487,234 @@
         "hype": 4,
         "prioridade_editada": false,
         "etiqueta_prioridade": "Alta"
+    },
+    "Tokyo Ghoul:re": {
+        "titulo": "Tokyo Ghoul:re",
+        "autor": "Sui Ishida",
+        "editora": "Panini",
+        "genero": [
+            "Terror",
+            "Sobrenatural"
+        ],
+        "ano_inicio": "2014",
+        "ano_fim": "2018",
+        "status": "Finalizado",
+        "meta_volumes": 16,
+        "volumes_adquiridos": [],
+        "hype": 4,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Alta"
+    },
+    "Uzumaki": {
+        "titulo": "Uzumaki",
+        "autor": "Junji Ito",
+        "editora": "Devir",
+        "genero": [
+            "Terror",
+            "Drama",
+            "Sobrenatural"
+        ],
+        "ano_inicio": "1998",
+        "ano_fim": "1999",
+        "status": "Finalizado",
+        "meta_volumes": 1,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Tomie": {
+        "titulo": "Tomie",
+        "autor": "Junji Ito",
+        "editora": "Pipoca & Nanquim",
+        "genero": [
+            "Terror",
+            "Sobrenatural",
+            "Drama"
+        ],
+        "ano_inicio": "1987",
+        "ano_fim": "2000",
+        "status": "Finalizado",
+        "meta_volumes": 2,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Fire Punch": {
+        "titulo": "Fire Punch",
+        "autor": "Tatsuki Fujimoto",
+        "editora": "JBC",
+        "genero": [
+            "Ação",
+            "Suspense",
+            "Sobrenatural"
+        ],
+        "ano_inicio": "2016",
+        "ano_fim": "2018",
+        "status": "Finalizado",
+        "meta_volumes": 8,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Old boy": {
+        "titulo": "Old boy",
+        "autor": "Garon Tsuchiya",
+        "editora": "Comix Zone",
+        "genero": [
+            "Suspense",
+            "Ação",
+            "Drama"
+        ],
+        "ano_inicio": "1996",
+        "ano_fim": "1998",
+        "status": "Finalizado",
+        "meta_volumes": 3,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Chainsaw Man": {
+        "titulo": "Chainsaw Man",
+        "autor": "Tatsuki Fujimoto",
+        "editora": "Panini",
+        "genero": [
+            "Ação",
+            "Fantasia"
+        ],
+        "ano_inicio": "2018",
+        "ano_fim": "2026",
+        "status": "Finalizado",
+        "meta_volumes": 24,
+        "volumes_adquiridos": [],
+        "hype": 4,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Alta"
+    },
+    "Death Note": {
+        "titulo": "Death Note",
+        "autor": "Takeshi Obata, Tsugumi Ohba",
+        "editora": "JBC",
+        "genero": [
+            "Suspense",
+            "Sobrenatural"
+        ],
+        "ano_inicio": "2003",
+        "ano_fim": "2006",
+        "status": "Finalizado",
+        "meta_volumes": 6,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "20th Century Boys": {
+        "titulo": "20th Century Boys",
+        "autor": "Naoki Urasawa",
+        "editora": "Panini",
+        "genero": [
+            "Suspense",
+            "Drama",
+            "Ficção Científica"
+        ],
+        "ano_inicio": "1999",
+        "ano_fim": "2006",
+        "status": "Finalizado",
+        "meta_volumes": 11,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Billy Bat": {
+        "titulo": "Billy Bat",
+        "autor": "Naoki Urasawa",
+        "editora": "Panini",
+        "genero": [
+            "Suspense",
+            "Sobrenatural",
+            "Drama"
+        ],
+        "ano_inicio": "2008",
+        "ano_fim": "2016",
+        "status": "Finalizado",
+        "meta_volumes": 10,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Ouran High School Host Club": {
+        "titulo": "Ouran High School Host Club",
+        "autor": "Bisco Hatori",
+        "editora": "Panini",
+        "genero": [
+            "Romance",
+            "Drama",
+            "Comédia"
+        ],
+        "ano_inicio": "2002",
+        "ano_fim": "2010",
+        "status": "Finalizado",
+        "meta_volumes": 9,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "The Legend Of Zelda: Twilight Princess": {
+        "titulo": "The Legend Of Zelda: Twilight Princess",
+        "autor": "Akira Himekawa",
+        "editora": "Panini",
+        "genero": [
+            "Ação",
+            "Aventura",
+            "Fantasia"
+        ],
+        "ano_inicio": "2016",
+        "ano_fim": "2022",
+        "status": "Finalizado",
+        "meta_volumes": 11,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Saint Seiya - Lost Canvas": {
+        "titulo": "Saint Seiya - Lost Canvas",
+        "autor": "Shiori Teshirogi",
+        "editora": "JBC",
+        "genero": [
+            "Ação",
+            "Aventura"
+        ],
+        "ano_inicio": "2006",
+        "ano_fim": "2011",
+        "status": "Finalizado",
+        "meta_volumes": 25,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
+    },
+    "Sanctuary": {
+        "titulo": "Sanctuary",
+        "autor": "Sho Fumimura",
+        "editora": "JBC",
+        "genero": [
+            "Suspense",
+            "Drama"
+        ],
+        "ano_inicio": "1990",
+        "ano_fim": "1995",
+        "status": "Finalizado",
+        "meta_volumes": 7,
+        "volumes_adquiridos": [],
+        "hype": 3,
+        "prioridade_editada": false,
+        "etiqueta_prioridade": "Média"
     }
 }
